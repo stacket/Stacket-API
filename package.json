@@ -1,0 +1,30 @@
+{
+  "name": "stacket",
+  "version": "1.0.0",
+  "description": "Interact with the Stacket api",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacket/Stacket-API.git"
+  },
+  "keywords": [
+    "npm",
+    "stacket"
+  ],
+  "author": "Stacket, Hundeklemmen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stacket/Stacket-API/issues"
+  },
+  "homepage": "https://github.com/stacket/Stacket-API#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.6"
+  }
+}
