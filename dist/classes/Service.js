@@ -262,6 +262,13 @@ class Service {
         return get(this.props._id, "usage", this.token);
     }
     /**
+     * Gets the IP Address of the service node.
+     * @returns {Promise<ServiceNodeNetwork>} This service's node ip
+     */
+    async getIP() {
+        return get(this.props._id, "ip", this.token);
+    }
+    /**
      * Gets the full history of all actions ever performed on this service.
      * @returns {Promise<Action[]>} All actions ever performed on this service
      */

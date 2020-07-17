@@ -3,7 +3,7 @@ import _Service from "../interfaces/Service";
 import Usage from "../interfaces/Usage";
 import { Type } from "../types/Type";
 import Allocation from "../interfaces/Allocation";
-import { ServiceNetwork } from "../interfaces/Network";
+import { ServiceNetwork, ServiceNodeNetwork } from "../interfaces/Network";
 import { Status } from "../types/Status";
 import { Payment } from "../types/Payment";
 import Subuser from "../interfaces/Subuser";
@@ -138,6 +138,11 @@ export default class Service {
      * @returns {Promise<Usage>} This service's resource usage
      */
     getUsage(): Promise<Usage>;
+    /**
+     * Gets the IP Address of the service node.
+     * @returns {Promise<ServiceNodeNetwork>} This service's node ip
+     */
+    getIP(): Promise<ServiceNodeNetwork>;
     /**
      * Gets the full history of all actions ever performed on this service.
      * @returns {Promise<Action[]>} All actions ever performed on this service

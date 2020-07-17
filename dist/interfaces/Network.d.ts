@@ -3,6 +3,10 @@ export interface ServiceNetwork {
     id: string;
     ipv6: string;
 }
+export interface ServiceNodeNetwork {
+    ip: string;
+    node: string;
+}
 export default interface Network {
     _id: string;
     name: string;
