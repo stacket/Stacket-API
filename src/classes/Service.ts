@@ -5,7 +5,7 @@ import _Service from "../interfaces/Service";
 import Usage from "../interfaces/Usage";
 import { Type } from "../types/Type";
 import Allocation from "../interfaces/Allocation";
-import { ServiceNetwork } from "../interfaces/Network";
+import { ServiceNetwork, ServiceNodeNetwork } from "../interfaces/Network";
 import { Status } from "../types/Status";
 import { Payment } from "../types/Payment";
 import Subuser from "../interfaces/Subuser";
@@ -286,6 +286,16 @@ export default class Service {
     async getUsage(): Promise<Usage> {
         return get(this.props._id, "usage", this.token);
     }
+
+    /**
+     * Gets the IP Address of the service node.
+     * @returns {Promise<ServiceNodeNetwork>} This service's node ip
+     */
+    async getIP(): Promise<ServiceNodeNetwork> {
+        return get(this.props._id, "ip", this.token);
+    }
+
+    
 
     /**
      * Gets the full history of all actions ever performed on this service.

@@ -1,6 +1,6 @@
 {
   "name": "stacket",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Interact with the Stacket api",
   "main": "dist/index.js",
   "scripts": {
