@@ -122,7 +122,7 @@ export default class Drive {
     * @returns {Promise<NetworkConnectResult>} The result of the request
     */
     async setName(name: string): Promise<NetworkConnectResult> {
-       return post(this.getId(), ``, { name }, this.token);
+        return post(this.getId(), ``, { name }, this.token);
     }
 
     /**

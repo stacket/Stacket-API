@@ -1,0 +1,1 @@
+export type FolderItemType = "service"|"disk"|"network";

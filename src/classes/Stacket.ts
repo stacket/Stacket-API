@@ -13,9 +13,13 @@ import Network from "./Network";
 import Drive from "./Drive";
 import _Drive from "../interfaces/Drive";
 
+import Folder from "./Folder";
+import _Folder from "../interfaces/Folder";
+
 import NewServiceSettings from "../interfaces/NewServiceSettings";
 import NewNetworkSettings from "../interfaces/NewNetworkSettings";
 import NewDriveSettings from "../interfaces/NewDriveSettings";
+import NewFolderSettings from "../interfaces/NewFolderSettings";
 
 /**
  * Stacket API client used for interacting with your services
@@ -168,7 +172,7 @@ export default class Stacket {
                 if(result.data.error) return reject(result.data.error);
                 
                 const access: Access = result.data.access;
-                const disk: Drive = new Drive(result.data.network, this.token, access);
+                const disk: Drive = new Drive(result.data.disk, this.token, access);
 
                 resolve(disk);
             } catch(e){
@@ -179,7 +183,7 @@ export default class Stacket {
     }
 
     /**
-     * Creates a new private network.
+     * Creates a new virtual disk.
      */
     async createDrive(settings: NewDriveSettings): Promise<Drive> {
         return new Promise(async (resolve: any, reject: any) => {
@@ -192,6 +196,61 @@ export default class Stacket {
                 if(e.data && e.data.error) return reject(e.data.error);
                 reject(e);
             };
+        });
+    }
+
+    /**
+     * Gets all folders that this account owns.
+     */
+    async getFolders(): Promise<Folder[]> {
+        return new Promise(async (resolve: any, reject: any) => {
+            try {
+                let result = await axios.get(`${base}/profile/folders/`, {headers: {Authorization: this.token}});
+                if(result.data.error) return reject(result.data.error);
+                
+                const folders = result.data.map((folder: _Folder) => new Folder(folder, this.token));
+
+                resolve(folders);
+            } catch(e){
+                if(e.data && e.data.error) return reject(e.data.error);
+                reject(e);
+            };
+        });
+    }
+
+    /**
+     * Gets a folder given its ID.
+     */
+    async getFolder(id: string): Promise<Folder> {
+        return new Promise(async (resolve: any, reject: any) => {
+            try {
+                let result = await axios.get(`${base}/profile/folders/${id}`, {headers: {Authorization: this.token}});
+                if(result.data.error) return reject(result.data.error);
+                
+                const disk: Folder = new Folder(result.data, this.token);
+
+                resolve(disk);
+            } catch(e){
+                if(e.data && e.data.error) return reject(e.data.error);
+                reject(e);
+            };
+        });
+    }
+
+    /**
+     * Creates a new folder.
+     */
+    async createFolder(settings: NewFolderSettings): Promise<Folder> {
+        return new Promise(async (resolve: any, reject: any) => {
+            try {
+                let result = await axios.post(`${base}/profile/folders/`, settings, {headers: {Authorization: this.token}});
+                if(result.data.error) return reject(result.data.error);
+
+                resolve(new Folder(result.data, this.token));
+            } catch(e){
+                if(e.data && e.data.error) return reject(e.data.error);
+                reject(e);
+            }
         });
     }
 
