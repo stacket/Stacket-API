@@ -100,3 +100,45 @@ client.getDrive(driveId).then(drive => {
     drive.delete();
 }).catch(console.error);
 ```
+
+# Create Folder
+```js
+client.createFolder({
+    "name": "Test Folder",
+    "disks": [],
+    "networks": [],
+    "services": ["5ef951de74eb7027994b585b"]
+});
+```
+
+# Rename Folder
+```js
+let folderId = "5f177a83e355067a6dfa037a";
+client.getFolder(folderId).then(folder => {
+    folder.setName("New folder name!");
+}).catch(console.error);
+```
+
+# Add Item to Folder
+```js
+let folderId = "5f177a83e355067a6dfa037a";
+client.getFolder(folderId).then(folder => {
+    folder.addItem({"id": "5ef951de74eb7027994b585b", "type": "service"});
+}).catch(console.error);
+```
+
+# Remove Item from Folder
+```js
+let folderId = "5f177a83e355067a6dfa037a";
+client.getFolder(folderId).then(folder => {
+    folder.removeItem({"id": "5ef951de74eb7027994b585b", "type": "service"});
+}).catch(console.error);
+```
+
+# Delete Folder
+```js
+let folderId = "5f177a83e355067a6dfa037a";
+client.getFolder(folderId).then(folder => {
+    folder.delete();
+}).catch(console.error);
+```

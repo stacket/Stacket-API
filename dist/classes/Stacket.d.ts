@@ -3,9 +3,11 @@ import _Network from "../interfaces/Network";
 import Network from "./Network";
 import Drive from "./Drive";
 import _Drive from "../interfaces/Drive";
+import Folder from "./Folder";
 import NewServiceSettings from "../interfaces/NewServiceSettings";
 import NewNetworkSettings from "../interfaces/NewNetworkSettings";
 import NewDriveSettings from "../interfaces/NewDriveSettings";
+import NewFolderSettings from "../interfaces/NewFolderSettings";
 /**
  * Stacket API client used for interacting with your services
  */
@@ -48,9 +50,21 @@ export default class Stacket {
      */
     getDrive(id: string): Promise<Drive>;
     /**
-     * Creates a new private network.
+     * Creates a new virtual disk.
      */
     createDrive(settings: NewDriveSettings): Promise<Drive>;
+    /**
+     * Gets all folders that this account owns.
+     */
+    getFolders(): Promise<Folder[]>;
+    /**
+     * Gets a folder given its ID.
+     */
+    getFolder(id: string): Promise<Folder>;
+    /**
+     * Creates a new folder.
+     */
+    createFolder(settings: NewFolderSettings): Promise<Folder>;
     /**
      * Verifies that your API key is valid. While this is good practice, it's not required.
      */
