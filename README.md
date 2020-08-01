@@ -4,6 +4,8 @@ Build powerful systems integrating your services together like never before.
 # Creating a client
 ```ts
 import Stacket from "stacket";
+//OR
+const Stacket = require("stacket").default;
 
 const client = new Stacket("auth-token");
 
