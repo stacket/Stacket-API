@@ -90,7 +90,7 @@ export default class Network {
     }
 
     /**
-     * Powers this service off.
+     * Disconnects this service from a network.
      * @returns {Promise<NetworkDisconnectResult>} The result of the request
      */
     async disconnect(service: string | Service): Promise<NetworkConnectResult> {
