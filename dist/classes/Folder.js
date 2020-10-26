@@ -3,12 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Axios_1 = __importDefault(require("Axios"));
+const axios_1 = __importDefault(require("axios"));
 const config_json_1 = require("../config.json");
 const Stacket_1 = __importDefault(require("./Stacket"));
 async function post(id, path, body, token) {
     try {
-        const result = await Axios_1.default.post(`${config_json_1.base}/profile/folders/${id}/${path}`, body, { headers: { Authorization: token } });
+        const result = await axios_1.default.post(`${config_json_1.base}/profile/folders/${id}/${path}`, body, { headers: { Authorization: token } });
         if (result.data.error)
             throw Error(result.data.error);
         return result.data;
@@ -38,6 +38,18 @@ class Folder {
      */
     getName() {
         return this.props.name;
+    }
+    /**
+     * Gets the folder top color.
+     */
+    getTopColor() {
+        return this.props.color.top;
+    }
+    /**
+     * Gets the folder bottom color.
+     */
+    getBottomColor() {
+        return this.props.color.bottom;
     }
     /**
      * Sets the name of this folder.
@@ -108,7 +120,7 @@ class Folder {
      */
     async delete() {
         try {
-            const result = await Axios_1.default.delete(`${config_json_1.base}/folders/${this.props._id}`, { headers: { Authorization: this.token } });
+            const result = await axios_1.default.delete(`${config_json_1.base}/folders/${this.props._id}`, { headers: { Authorization: this.token } });
             if (result.data.error)
                 throw Error(result.data.error);
             return result.data;

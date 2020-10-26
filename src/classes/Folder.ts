@@ -1,4 +1,4 @@
-import axios from "Axios";
+import axios from "axios";
 import { base } from "../config.json";
 import Stacket from "./Stacket";
 import _Folder from "../interfaces/Folder";
@@ -39,6 +39,21 @@ export default class Folder {
      */
     getName(): string {
         return this.props.name;
+    }
+
+    /**
+     * Gets the folder top color.
+     */
+    getTopColor(): string {
+        return this.props.color.top;
+    }
+    
+    
+    /**
+     * Gets the folder bottom color.
+     */
+    getBottomColor(): string {
+        return this.props.color.bottom;
     }
 
     /**

@@ -44,7 +44,7 @@ export default class Network {
      */
     connect(service: string | Service): Promise<NetworkConnectResult>;
     /**
-     * Powers this service off.
+     * Disconnects this service from a network.
      * @returns {Promise<NetworkDisconnectResult>} The result of the request
      */
     disconnect(service: string | Service): Promise<NetworkConnectResult>;

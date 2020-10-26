@@ -4,5 +4,9 @@ export default interface Folder {
     _id: string,
     user: string,
     name: string,
-    items: FolderItem[]
+    items: FolderItem[],
+    color: {
+        top: string,
+        bottom: string
+    }
 }

@@ -17,6 +17,14 @@ export default class Folder {
      */
     getName(): string;
     /**
+     * Gets the folder top color.
+     */
+    getTopColor(): string;
+    /**
+     * Gets the folder bottom color.
+     */
+    getBottomColor(): string;
+    /**
      * Sets the name of this folder.
      */
     setName(name: string): Promise<_Folder>;

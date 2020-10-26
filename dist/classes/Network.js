@@ -86,7 +86,7 @@ class Network {
         return get(this.getId(), `connect/${id}`, this.token);
     }
     /**
-     * Powers this service off.
+     * Disconnects this service from a network.
      * @returns {Promise<NetworkDisconnectResult>} The result of the request
      */
     async disconnect(service) {
